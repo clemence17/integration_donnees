@@ -1,0 +1,23 @@
+{
+  "name": "scraping",
+  "version": "1.0.0",
+  "description": "scrape",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemence17/integration_donnees.git"
+  },
+  "author": "clemence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clemence17/integration_donnees/issues"
+  },
+  "homepage": "https://github.com/clemence17/integration_donnees#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "node-fetch": "^2.6.7"
+  }
+}
