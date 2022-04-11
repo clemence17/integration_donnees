@@ -1,0 +1,23 @@
+{
+  "name": "integration_donnees",
+  "version": "1.0.0",
+  "description": "projet intergration de données",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clemence17/integration_donnees.git"
+  },
+  "author": "thiziri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clemence17/integration_donnees/issues"
+  },
+  "homepage": "https://github.com/clemence17/integration_donnees#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "save": "^2.4.0"
+  }
+}
