@@ -1,24 +1,17 @@
 {
-  "name": "integration_donnees",
-  "version": "1.0.0",
-  "description": "projet intergration de données",
-  "main": "index.js",
+  "name": "nodeapp",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/clemence17/integration_donnees.git"
-  },
-  "author": "thiziri",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/clemence17/integration_donnees/issues"
-  },
-  "homepage": "https://github.com/clemence17/integration_donnees#readme",
   "dependencies": {
-    "csv-parser": "^3.0.0",
-    "express": "^4.17.3",
-    "save": "^2.4.0"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.4"
   }
 }
