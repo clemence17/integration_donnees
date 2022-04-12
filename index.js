@@ -77,3 +77,26 @@ request(options, function (error, response) {
 
 
 })
+
+
+app.get('/listePays',function(request,response){
+var value = [];
+var test='row.'
+ var test2=test+request.params.col
+   console.log(test2);
+//recup les headers
+response.write('<p>');
+fs.createReadStream('data.csv')
+  .pipe(csv())
+  .on('data', (row) => {
+    if(value.includes(row.Pays)==false){
+      //console.log(row[request.params.col]);
+  value.push(row.Pays);
+  response.write('<li><a href=/read/'+row.Pays+'>'+row.Pays+'</a></li>');
+    //console.log(value.length);
+    }
+
+  })
+  response.write('</p>');
+
+  })
