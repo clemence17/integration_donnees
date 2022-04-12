@@ -42,20 +42,21 @@ module.exports.uploadCsv = function(req, res) {
             });
 };
 */
-//lecture de fichier selon le departement
+//lecture de fichier selon le pays
 const csv = require('csv-parser');
+var fs = require("fs");
 
-app.get('/read/:dep',function(request,response){
 
-response.write('<html><head></head><body><table><thead><tr><th> Date</th><th>Departement</th><th>Reanimation</th><th>Hospitalisation</th></tr></thead>');
+app.get('/read/:pays',function(request,response){
+response.write('<html><head></head><body><table><thead><tr><th> Date</th><th>Pays</th><th>Infection</th><th>Deces</th><th>Guerisons</th><th>TauxDeces</th><th>TauxGuerison</th><th>TauxInfection</th></tr></thead>');
 fs.createReadStream('data.csv')
   .pipe(csv())
   .on('data', (row) => {
-  if (row.lib_dep==request.params.dep){
-  response.write('<tr><td>'+row.date+'</td><td>'+row.lib_dep+'</td><td>'+row.rea+'</td><td>'+row.hosp+'</td></tr>');
+  if (row.Pays==request.params.pays){
+  response.write('<tr><td>'+row.Date+'</td><td>'+row.Pays+'</td><td>'+row.Infections+'</td><td>'+row.Deces+'</td><td>'+row.Guerisons+'</td><td>'+row.TauxDeces+'</td><td>'+row.TauxGuerison+'</td><td>'+row.TauxInfection+'</td></tr>');
   
 }
 })
   response.write('</body></html>');
   
-});}
+});
