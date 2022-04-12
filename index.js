@@ -71,7 +71,7 @@ var options = {
   }
 };
 request(options, function (error, response) {
-	fs.writeFile("COVID.json", JSON.stringify(response.body), err => {
+	fs.writeFile("COVID.json", response.body, err => {
      
     // Checking for errors
     if (err) throw err; 
