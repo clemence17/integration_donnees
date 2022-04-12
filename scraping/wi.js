@@ -42,17 +42,31 @@ app.get('/covid_countries',function (request, response) {
         donnees.push({
             rank,
             ...donnees2,
+=======
+                //name = $(elem).find('td a').html();
+                donnees2 = [];
+                cols = $(elem).find('td').each((colidx, colelem) => {
+                    col = $(colelem).text().replace(/[\n\r]+/g,'');
+                    donnees2.push(col,);
+                });
+                donnees.push({
+                    rank,
+                    ...donnees2,
+                });
+            });
+
+            // exporting to csv
+            const j2cp = new json2csv()
+            const csv = j2cp.parse(donnees);
+
+            fs.writeFileSync("./wiki.csv", csv, "utf-8");
+        }).catch(function (err) {
+            console.log(err);
+>>>>>>> ed8fc7faae3ce884a190bcced60764e3c2dfa447
         });
-    });
-
-    // exporting to csv
-    const j2cp = new json2csv()
-    const csv = j2cp.parse(donnees);
-
-    fs.writeFileSync("./wiki.csv", csv, "utf-8");
-}).catch(function (err) {
-    console.log(err);
-});
+    })();
+    response.send('CSV créé');
+})
 
 }
 )();
