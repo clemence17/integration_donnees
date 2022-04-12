@@ -60,3 +60,20 @@ fs.createReadStream('data.csv')
   response.write('</body></html>');
   
 });
+
+app.get('/COVID',function(request,response){
+var request = require('request');
+
+var options = {
+  'method': 'GET',
+  'url': 'https://api.covid19api.com/summary',
+  'headers': {
+  }
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+
+
+})
