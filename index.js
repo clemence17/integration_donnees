@@ -87,6 +87,23 @@ request(options, function (error, response) {
 
 })
 
+app.get('/nomPays', function(request, response){
+    fs.readFile('COVID.json', (err, data) => {
+    if (err) throw err;
+    let coco = JSON.parse(data);
+	response.write('<p>');
+	var i=0;
+	while (i<coco.Countries.length){
+		response.write('<li>'+coco.Countries[i].Country+'</li>');
+		i=i+1;
+	}
+	response.write('</p>');
+    console.log(coco.Countries[0].Country);
+	console.log(coco.Countries.length);
+});
+
+})
+
 
 app.get('/listePays',function(request,response){
 var value = [];
