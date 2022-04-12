@@ -1,7 +1,6 @@
 
 const { ApifyClient } = require('apify-client');
 
-const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Initialize the ApifyClient with API token
