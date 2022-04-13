@@ -43,18 +43,17 @@ app.get('/covid_countries',function (request, response) {
                 });
             });
 
-            // exporting to csv
-            const j2cp = new json2csv()
-            const csv = j2cp.parse(donnees);
+            // exporting to json
+            const json = JSON.stringify(donnees);
 
-            fs.writeFileSync("./wiki.csv", csv, "utf-8");
+            fs.writeFileSync("./wikipedia_virus.json", json, "utf-8");
         }).catch(function (err) {
             console.log(err);
         });
     })();
-    response.send('CSV créé sur les données de pandémie mondial');
+    response.send('json créé sur les données de pandémie mondial');
 })
 
 app.listen(PORT, function(){
-    console.log('Hello : ' + PORT);
+    console.log('Json créé  ' );
 })
