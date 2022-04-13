@@ -131,7 +131,4 @@ app.get('/COVID', function(request, response){
 
 })
 
-app.listen(PORT, function(){
-    console.log('Hello :'+ PORT);
-}) 
 
