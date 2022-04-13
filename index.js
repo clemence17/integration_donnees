@@ -3,8 +3,8 @@
 const express= require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-
+const httprequest = require('request');
+app.use(express.json())
 app.get('/', function(request, response){
     response.send('Intégration de données connectées');
 })
@@ -61,48 +61,8 @@ fs.createReadStream('data.csv')
   
 });
 
-app.get('/COVID',function(request,response){
-var request = require('request');
-
-var options = {
-  'method': 'GET',
-  'url': 'https://api.covid19api.com/summary',
-  'headers': {
-  }
-};
-request(options, function (error, response) {
-	fs.writeFile("COVID.json", response.body, err => {
-     
-    // Checking for errors
-    if (err) throw err; 
-   
-    console.log("Done writing"); // Success
-});
-  if (error) throw new Error(error);
-  console.log(response.body);
-});
 
 
-
-
-})
-
-app.get('/nomPays', function(request, response){
-    fs.readFile('COVID.json', (err, data) => {
-    if (err) throw err;
-    let coco = JSON.parse(data);
-	response.write('<p>');
-	var i=0;
-	while (i<coco.Countries.length){
-		response.write('<li>'+coco.Countries[i].Country+'</li>');
-		i=i+1;
-	}
-	response.write('</p>');
-    console.log(coco.Countries[0].Country);
-	console.log(coco.Countries.length);
-});
-
-})
 
 
 app.get('/listePays',function(request,response){
@@ -148,3 +108,30 @@ fs.readFile('datajson.json', 'utf8', (error, data) => {
 
 
 })
+
+
+
+
+///////////////////////////:PARTIE RECUP API
+
+app.get('/COVID', function(request, response){
+
+	var options = {
+	  'method': 'GET',
+	  'url': 'https://api.covid19api.com/summary',
+	  'headers': {
+	  }
+	};
+	httprequest(options, function (error, httpresponse) {
+		
+		// Checking for errors
+		if (error) throw error; 
+		response.status(200).json(JSON.parse(httpresponse.body));
+	});
+
+})
+
+app.listen(PORT, function(){
+    console.log('Hello :'+ PORT);
+}) 
+
