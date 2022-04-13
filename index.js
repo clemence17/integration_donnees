@@ -133,8 +133,17 @@ app.get('/csvToJson', function(request, response){
 let csvToJson = require('convert-csv-to-json');
 
 let fileInputName = 'data.csv'; 
-let fileOutputName = 'myOutputFile.json';
+let fileOutputName = 'datajson.json';
 
-csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
+fs.readFile('datajson.json', 'utf8', (error, data) => {
+     if(error){
+        console.log(error);
+        return;
+     }
+     response.json(JSON.parse(data));
+     //console.log(JSON.parse(data));
+
+})
+
 
 })
