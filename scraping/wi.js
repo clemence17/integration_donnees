@@ -4,8 +4,7 @@ const PORT = process.env.PORT || 3000;
 
 var req = require("request-promise"),
 cheerio = require("cheerio"),
-fs = require("fs"),
-json2csv = require("json2csv").Parser;
+fs = require("fs")
 
 app.get('/covid_countries',function (request, response) {
 
@@ -51,7 +50,18 @@ app.get('/covid_countries',function (request, response) {
             console.log(err);
         });
     })();
-    response.send('json créé sur les données de pandémie mondial');
+    //response.write('json créé sur les données de pandémie mondial');
+
+
+    fs.readFile('wikipedia_virus.json', 'utf-8', (error, data) => {
+        if(error){
+        console.log(error);
+        return;
+        }
+        response.json(JSON.parse(data));
+        //console.log(JSON.parse(data));
+
+    })
 })
 
 app.listen(PORT, function(){
