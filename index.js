@@ -134,6 +134,7 @@ let csvToJson = require('convert-csv-to-json');
 
 let fileInputName = 'data.csv'; 
 let fileOutputName = 'datajson.json';
+csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
 
 fs.readFile('datajson.json', 'utf8', (error, data) => {
      if(error){
