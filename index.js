@@ -126,3 +126,15 @@ fs.createReadStream('data.csv')
   response.write('</p>');
 
   })
+
+
+
+app.get('/csvToJson', function(request, response){
+let csvToJson = require('convert-csv-to-json');
+
+let fileInputName = 'data.csv'; 
+let fileOutputName = 'myOutputFile.json';
+
+csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
+
+})
