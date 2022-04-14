@@ -88,24 +88,40 @@ fs.createReadStream('data.csv')
   })
 
 
-
-app.get('/csvToJson', function(request, response){
-let csvToJson = require('convert-csv-to-json');
+function funcCSV() {
+  let csvToJson = require('convert-csv-to-json');
 
 let fileInputName = 'data.csv'; 
 let fileOutputName = 'datajson.json';
 csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
+ return Promise.resolve("Success");
+}
 
-fs.readFile('datajson.json', 'utf8', (error, data) => {
+
+app.get('/csvToJson', function(request, response){
+
+
+funcCSV().then(
+      (message) => {
+        fs.readFile('datajson.json', 'utf8', (error, data) => {
      if(error){
         console.log(error);
         return;
      }
      response.json(JSON.parse(data));
+    
      //console.log(JSON.parse(data));
 
 })
+      }
+    )
 
+
+      
+      
+    
+
+ 
 
 })
 
