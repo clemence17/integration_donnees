@@ -28,22 +28,52 @@
           "summary": "Get the PIB from country",
           "responses": {
             "200": {
-              "description": "Transform csv file to a json file and return it",
+              "description": "Transform csv file to a JSon file and return it",
               "schema": {
-                "$ref": "#/definitions/Users"
+                "$ref": "#/definitions/CSV"
               }
             }
           }
         }
       },
+      "/COVID": {
+        "get": {
+          "tags": ["Get the data from COVID19API"],
+          "summary": "Get the data from an api and return a JSon file",
+          "responses": {
+            "200": {
+              "description": "Get the data from an api and return a JSon file",
+              "schema": {
+                "$ref": "#/definitions/API/Global"
+              }
+            }
+          }
+        }
+    },
+
+    "/covid_countries": {
+        "get": {
+          "tags": [" Scrapping the data"],
+          "summary": "Get covid data from Wikipedia",
+          "responses": {
+            "200": {
+              "description": "Create a JSon file after scrapping a Wikipedia page",
+              "schema": {
+                "$ref": "#/definitions/Scrap"
+              }
+            }
+          }
+        }
+      }
+    },
 
 
       
       "definitions": {
-        "User": {
+        "CSV": {
           "required": ["id", "Pays", "Unite","Annee","PIB"],
           "properties": {
-            "_id": {
+            "id": {
               "type": "integer",
                
                "exemple": 500,
@@ -65,46 +95,48 @@
             }
           }
         },
-        "Users": {
-          "type": "array",
-          "$ref": "#/definitions/User"
-        }
-      },
-    
-        "/COVID": {
-          "get": {
-            "tags": ["Download the covid data from the COVID19API"],
-            "summary": "Get the covid statistics for each country",
-            "responses": {
-              "200": {
-                "description": "Read the data from the API and generate a Json file",
-                "schema": {
-                  "$ref": "#/API"
-                
-                }
+        
+        "Scrap": {
+            "required": ["Lieux", "Confirme", "Mort par million","Population"],
+            "properties": {
+              "Lieux": {
+                "type": "string",
+                "uniqueItems": true
+              },
+              "Confirme": {
+                "type": "number"
+              },
+              "Mort par million": {
+                "type": "number"
+              },
+              "Population": {
+                "type": "number"
               }
             }
-          }
-        }, 
+          },
   
-
-
-      
-      "API": {
-        "Global": {
-          "required": ["NewConfirmed", "TotalConfirmed", "NewDeaths","TotalDeaths",
-          "NewRecovered",
-          "TotalRecovered"],
-          "properties": {
         
+
+        "API": {
+
+           "Global": {
+          "required": ["ID","NewConfirmed", "TotalConfirmed", "NewDeaths","TotalDeaths",
+          "NewRecovered",
+          "TotalRecovered","Country", "CountryCode","Slug"],
+          "properties": {
+
+         "ID": {
+              "type": "number"
+           
+            },
             "NewConfirmed": {
               "type": "number"
            
             },
-            "TotalConfirmed": {
-                "type": "number"
-             
-              },
+             "TotalConfirmed": {
+              "type": "number"
+           
+            },
               "NewDeaths": {
                 "type": "number"
              
@@ -120,12 +152,7 @@
               "TotalRecovered": {
                 "type": "number"
              
-              }
-          },
-
-          "Countries": {
-            "required": ["Country", "CountryCode","Slug"],
-            "properties": {
+              },
               "Country": {
                 "type": "string" 
               },
@@ -136,29 +163,20 @@
               "Slug": {
                 "type": "string"
               }
-             
-            },
+          }
 
-            "ID": {
-                "required": ["ID"],
-                "properties": {
-                  "ID": {
-                    "type": "integer",
-                     
-                     "exemple": 500,
-                    "uniqueItems": true
-                  }
-                 
-                  }
-                }
-        },
-        "Users": {
-          "type": "array",
-          "$ref": "#/definitions/User"
-        }
-        }
+            
+        
+}
+
+
+          }
+        
+
       }
-    }
+        
+      
+    
 }
    
   
