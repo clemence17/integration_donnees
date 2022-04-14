@@ -37,6 +37,39 @@
         }
       },
 
+
+      
+      "definitions": {
+        "User": {
+          "required": ["id", "Pays", "Unite","Annee","PIB"],
+          "properties": {
+            "_id": {
+              "type": "integer",
+               
+               "exemple": 500,
+              "uniqueItems": true
+            },
+            "Pays": {
+              "type": "string"
+            },
+            "Unite": {
+              "type": "string"
+            },
+            "Annee": {
+              "type": "integer"
+            },
+            "PIB": {
+              "type": "number"
+            
+            
+            }
+          }
+        },
+        "Users": {
+          "type": "array",
+          "$ref": "#/definitions/User"
+        }
+      },
     
         "/COVID": {
           "get": {
@@ -56,37 +89,6 @@
   
 
 
-      "definitions": {
-      "User": {
-        "required": ["id", "Pays", "Unite","Annee","PIB"],
-        "properties": {
-          "_id": {
-            "type": "integer",
-             
-             "exemple": 500,
-            "uniqueItems": true
-          },
-          "Pays": {
-            "type": "string"
-          },
-          "Unite": {
-            "type": "string"
-          },
-          "Annee": {
-            "type": "integer"
-          },
-          "PIB": {
-            "type": "number"
-          
-          
-          }
-        }
-      },
-      "Users": {
-        "type": "array",
-        "$ref": "#/definitions/User"
-      }
-    },
       
       "API": {
         "Global": {
