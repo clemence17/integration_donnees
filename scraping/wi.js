@@ -29,17 +29,24 @@ app.get('/covid_countries',function (request, response) {
             let name, rank, cols, col;
 
             let rows = $('table.wikitable tbody tr').each((idx, elem) => {
+                if (col == "Guam") {
+                    return false
+                } else {
                 rank =$(elem).find('th').text().replace(/[\n\r]+/g,'');
-                //name = $(elem).find('td a').html();
                 donnees2 = [];
                 cols = $(elem).find('td').each((colidx, colelem) => {
                     col = $(colelem).text().replace(/[\n\r]+/g,'');
-                    donnees2.push(col,);
+                    if (col == "Guam") {
+                        return false;
+                    } else {
+                        donnees2.push(col,);
+                    }
                 });
                 donnees.push({
                     rank,
                     ...donnees2,
                 });
+            }
             });
 
             // exporting to json
