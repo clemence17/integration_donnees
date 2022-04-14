@@ -5,6 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const httprequest = require('request');
 app.use(express.json())
+
+// Swagger ingtegration
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+
 app.get('/', function(request, response){
     response.send('Intégration de données connectées');
 })
@@ -216,6 +222,12 @@ app.get('/covid_countries',function (request, response) {
     })
 })
 
+app.use(
+    '/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+  );
+  
 app.listen(PORT, function(){
     console.log('Hello :'+ PORT);
 }) 

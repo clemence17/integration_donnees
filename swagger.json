@@ -1,0 +1,171 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Intégration de données connectées",
+      "description": "Intégrération des données depuis 3 sources différentes",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["data.csv"],
+    "produces": ["datajson.json"],
+   
+    "paths": {
+      "/csvToJson": {
+        "get": {
+          "tags": ["Download the data"],
+          "summary": "Get the PIB from country",
+          "responses": {
+            "200": {
+              "description": "Transform csv file to a json file and return it",
+              "schema": {
+                "$ref": "#/definitions/Users"
+              }
+            }
+          }
+        }
+      },
+
+    
+        "/COVID": {
+          "get": {
+            "tags": ["Download the covid data from the COVID19API"],
+            "summary": "Get the covid statistics for each country",
+            "responses": {
+              "200": {
+                "description": "Read the data from the API and generate a Json file",
+                "schema": {
+                  "$ref": "#/API"
+                
+                }
+              }
+            }
+          }
+        }, 
+  
+
+
+      "definitions": {
+      "User": {
+        "required": ["id", "Pays", "Unite","Annee","PIB"],
+        "properties": {
+          "_id": {
+            "type": "integer",
+             
+             "exemple": 500,
+            "uniqueItems": true
+          },
+          "Pays": {
+            "type": "string"
+          },
+          "Unite": {
+            "type": "string"
+          },
+          "Annee": {
+            "type": "integer"
+          },
+          "PIB": {
+            "type": "number"
+          
+          
+          }
+        }
+      },
+      "Users": {
+        "type": "array",
+        "$ref": "#/definitions/User"
+      }
+    },
+      
+      "API": {
+        "Global": {
+          "required": ["NewConfirmed", "TotalConfirmed", "NewDeaths","TotalDeaths",
+          "NewRecovered",
+          "TotalRecovered"],
+          "properties": {
+        
+            "NewConfirmed": {
+              "type": "number"
+           
+            },
+            "TotalConfirmed": {
+                "type": "number"
+             
+              },
+              "NewDeaths": {
+                "type": "number"
+             
+              },
+              "TotalDeaths": {
+                "type": "number"
+             
+              },
+              "NewRecovered": {
+                "type": "number"
+             
+              },
+              "TotalRecovered": {
+                "type": "number"
+             
+              }
+          },
+
+          "Countries": {
+            "required": ["Country", "CountryCode","Slug"],
+            "properties": {
+              "Country": {
+                "type": "string" 
+              },
+              "CountryCode": {
+                "type": "string",
+                "exemple": 500
+              },
+              "Slug": {
+                "type": "string"
+              }
+             
+            },
+
+            "ID": {
+                "required": ["ID"],
+                "properties": {
+                  "ID": {
+                    "type": "integer",
+                     
+                     "exemple": 500,
+                    "uniqueItems": true
+                  }
+                 
+                  }
+                }
+        },
+        "Users": {
+          "type": "array",
+          "$ref": "#/definitions/User"
+        }
+        }
+      }
+    }
+}
+   
+  
+  
+      
+    
+  
+
+
+
+
+  

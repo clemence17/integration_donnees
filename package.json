@@ -17,6 +17,7 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.4",
     "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "swagger-ui-express": "^4.3.0"
   }
 }
