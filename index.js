@@ -14,9 +14,7 @@ app.get('/nom/:name', function(request, response){
     response.send('bienvenue '+ request.params.name+' tu as '+age);
 })
 
-app.listen(PORT, function(){
-    console.log('Hello :'+ PORT);
-}) 
+
 
 /*
 // Create the uploade csv view on the url uploadFile.html
@@ -217,3 +215,7 @@ app.get('/covid_countries',function (request, response) {
 
     })
 })
+
+app.listen(PORT, function(){
+    console.log('Hello :'+ PORT);
+}) 
