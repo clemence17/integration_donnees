@@ -22,7 +22,7 @@
     "produces": ["datajson.json"],
    
     "paths": {
-      "/csvToJson": {
+      "/PibPays": {
         "get": {
           "tags": ["Download the data"],
           "summary": "Get the PIB from country",
@@ -36,7 +36,7 @@
           }
         }
       },
-      "/COVID": {
+      "/CovidPays": {
         "get": {
           "tags": ["Get the data from COVID19API"],
           "summary": "Get the data from an api and return a JSon file",
@@ -51,7 +51,7 @@
         }
     },
 
-    "/covid_countries": {
+    "/WikipediaCovidPays": {
         "get": {
           "tags": [" Scrapping the data"],
           "summary": "Get covid data from Wikipedia",

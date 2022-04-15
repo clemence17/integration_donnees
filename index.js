@@ -102,7 +102,7 @@ csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
 }
 
 
-app.get('/csvToJson', function(request, response){
+app.get('/PibPays', function(request, response){
 
 
 funcCSV().then(
@@ -134,7 +134,7 @@ funcCSV().then(
 
 ///////////////////////////:PARTIE RECUP API
 
-app.get('/COVID', function(request, response){
+app.get('/CovidPays', function(request, response){
 
 	var options = {
 	  'method': 'GET',
@@ -157,7 +157,7 @@ app.get('/COVID', function(request, response){
 var req = require("request-promise");
 var cheerio = require("cheerio");
 
-app.get('/covid_countries',function (request, response) {
+app.get('/WikipediaCovidPays',function (request, response) {
 
     // page wikipedia 
     const wiki = "https://fr.wikipedia.org/wiki/Coronavirus";
